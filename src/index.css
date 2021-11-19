@@ -1,13 +1,47 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen";
+  box-sizing: border-box;
+  transition: all ease-out 0.01s;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --color-1: #186cb8;
+  --color-2: #2a9a9f;
+  --color-primary: #082032;
+  --color-background: #2c394b;
+  --color-content: #334756;
+}
+
+body {
+  background-image: linear-gradient(
+    #14023d,
+    #02223d,
+    #02253d,
+    #3d0847,
+    #1f0025
+  );
+}
+
+html::-webkit-scrollbar {
+  width: 0.6vw;
+  height: 0.6vw;
+  background-image: linear-gradient(#14023d, #02223d);
+}
+
+html::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 25px;
+}
+
+.glow {
+  box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px var(--color-1),
+    0 0 4px var(--color-1), 0 0 5px var(--color-1), 0 0 6px var(--color-1),
+    0 0 7px var(--color-1);
 }
