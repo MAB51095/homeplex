@@ -1,0 +1,49 @@
+.carousel {
+  width: 99vw;
+  height: 70vh;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0.5rem;
+
+  overflow-x: scroll;
+}
+
+.carouselItem {
+  background-color: rgb(160, 159, 95);
+  min-width: 100%;
+  height: 100%;
+  margin-right: 0.5rem;
+
+  display: flex;
+
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.carouselItem:last-child {
+  margin-right: 0;
+}
+
+.carouselItemImage {
+  width: 70%;
+  height: 100%;
+  cursor: pointer;
+
+  transition: ease-in 0.5s;
+  object-fit: cover;
+
+  z-index: 0;
+}
+
+.carouselItem div {
+  width: 30%;
+  z-index: 4;
+}
+
+@media (max-width: 500px) {
+  .carousel {
+    height: 30vh;
+  }
+}

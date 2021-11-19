@@ -13,8 +13,9 @@
 
   /* background-color: var(--color-primary); */
 
-  background-color: rgb(17 22 41 / 57%);
+  background-color: #111031;
   backdrop-filter: blur(2px);
+  z-index: 10;
 }
 
 .brand {
