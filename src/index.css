@@ -45,3 +45,26 @@ body {
     0 0 4px var(--color-1), 0 0 5px var(--color-1), 0 0 6px var(--color-1),
     0 0 7px var(--color-1);
 }
+
+.glass {
+  /* border: 1px solid rgba(255, 255, 255, 0.6); */
+
+  background-color: rgba(46, 139, 132, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+.glass::before {
+  content: "";
+  background: rgba(255, 255, 255, 0.4);
+  width: 60%;
+  height: 100%;
+  top: 0%;
+  left: -125%;
+  transform: skew(45deg);
+  position: absolute;
+  transition: left 0.5s ease-out;
+}
+
+.glass:hover::before {
+  left: 150%;
+}

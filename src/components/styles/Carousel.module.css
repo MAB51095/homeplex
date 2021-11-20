@@ -1,20 +1,23 @@
 .carousel {
-  width: 99vw;
+  width: 100vw;
+  min-height: 200px;
   height: 70vh;
 
   display: flex;
   align-items: center;
+  justify-content: space-around;
 
   padding: 0.5rem;
-
-  overflow-x: scroll;
+  box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px var(--color-1),
+    0 0 4px var(--color-1), 0 0 5px var(--color-1), 0 0 6px var(--color-1),
+    0 0 7px var(--color-1);
 }
 
 .carouselItem {
-  background-color: rgb(160, 159, 95);
-  min-width: 100%;
+  width: 70%;
+
+  min-width: 80%;
   height: 100%;
-  margin-right: 0.5rem;
 
   display: flex;
 
@@ -22,13 +25,10 @@
   overflow: hidden;
 }
 
-.carouselItem:last-child {
-  margin-right: 0;
-}
-
 .carouselItemImage {
   width: 70%;
   height: 100%;
+
   cursor: pointer;
 
   transition: ease-in 0.5s;
@@ -42,6 +42,56 @@
   z-index: 4;
 }
 
+.next,
+.prev {
+  z-index: 10;
+  width: 30px;
+  height: 50px;
+
+  background-color: transparent;
+
+  border: none;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+}
+
+.next:hover,
+.prev:hover {
+  text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px var(--color-2),
+    0 0 4px var(--color-2), 0 0 5px var(--color-2), 0 0 6px var(--color-2),
+    0 0 7px var(--color-2);
+  box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px var(--color-2),
+    0 0 4px var(--color-2), 0 0 5px var(--color-2), 0 0 6px var(--color-2),
+    0 0 7px var(--color-2);
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @media (max-width: 500px) {
   .carousel {
     height: 30vh;

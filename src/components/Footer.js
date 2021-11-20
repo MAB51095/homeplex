@@ -11,7 +11,7 @@ import tmdb_logo from "../img/tmdb.svg";
 function Footer() {
   return (
     <footer className={`${styles.footer}`}>
-      Built with
+      <div>Built with</div>
       <div className={`${styles.logos}`}>
         <a href="https://reactjs.org/docs/getting-started.html" target="_blank">
           <img src={react_logo} alt="" />
