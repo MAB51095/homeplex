@@ -6,7 +6,7 @@ function Header() {
   return (
     <div className={`${styles.header}`}>
       <div className={`${styles.brand}`}>
-        <h1>homeplex</h1>
+        <h1 className={`${styles.h1}`}>homeplex</h1>
       </div>
       <Navbar />
     </div>

@@ -1,5 +1,5 @@
 .carousel {
-  width: 100vw;
+  width: 99vw;
   min-height: 200px;
   height: 70vh;
 
@@ -26,7 +26,7 @@
 }
 
 .carouselItemImage {
-  width: 70%;
+  width: 100%;
   height: 100%;
 
   cursor: pointer;
@@ -37,9 +37,28 @@
   z-index: 0;
 }
 
-.carouselItem div {
-  width: 30%;
-  z-index: 4;
+.carouselItemDetails {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  padding: 1rem;
+  color: #fff;
+
+  text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px var(--color-primary),
+    0 0 4px var(--color-primary), 0 0 5px var(--color-primary),
+    0 0 6px var(--color-primary), 0 0 7px var(--color-primary);
+  vertical-align: center;
+}
+
+.carouselItemDetails h1 {
+  font-size: 2rem;
+}
+
+.star {
+  object-fit: contain;
+  height: 1rem;
+  width: 1rem;
 }
 
 .next,
@@ -95,5 +114,26 @@
 @media (max-width: 500px) {
   .carousel {
     height: 30vh;
+  }
+
+  .carouselItem {
+    width: calc(90%-70px);
+  }
+
+  .next:hover,
+  .prev:hover {
+    box-shadow: none;
+  }
+  .carouselItemDetails {
+    font-size: 0.6rem;
+  }
+  .carouselItemDetails h1 {
+    font-size: 0.6rem;
+  }
+
+  .star {
+    object-fit: contain;
+    height: 0.5rem;
+    width: 0.5rem;
   }
 }

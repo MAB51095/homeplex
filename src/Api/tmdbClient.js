@@ -5,7 +5,7 @@ const baseURL = "https://api.themoviedb.org/3";
 
 export const uri = {
   imageURL: "https://image.tmdb.org/t/p/w780/",
-  fetchTrending: "/trending/all/week?api_key=" + API_KEY,
+  fetchTrending: "/trending/movie/week?api_key=" + API_KEY,
 };
 
 const tmdbClient = axios.create({

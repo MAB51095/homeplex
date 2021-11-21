@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles/Carousel.module.css";
-import poster from "../img/poster.jpg";
+
 import prev from "../img/prev.svg";
 import next from "../img/next.svg";
 import tmdbClient, { uri } from "../Api/tmdbClient";
+import { useSwipeable } from "react-swipeable";
 
-import react_logo from "../img/react.svg";
-import firebase_logo from "../img/firebase.svg";
-import github_logo from "../img/github.svg";
-import iconscout_logo from "../img/iconscout.svg";
-import tmdb_logo from "../img/tmdb.svg";
+import star from "../img/star.svg";
 
 function Carousel() {
   const [carouselItems, setCarouselItems] = useState("");
@@ -21,35 +18,50 @@ function Carousel() {
     async function fetchTrending() {
       const request = await tmdbClient.get(trendingUrl);
       setCarouselItems(request.data.results);
-      return request.data.results;
+      console.log(request.data.results);
     }
     fetchTrending();
     setCurrentItemIndex(0);
   }, [trendingUrl]);
 
-  const setCurrentSlide = (e) => {
-    if ((e.target.value = ">")) {
-      if (currentItemIndex === carouselItems.length - 1) {
-        setCurrentItemIndex(0);
-      } else {
-        setCurrentItemIndex((prev) => {
-          return prev + 1;
-        });
-      }
+  const nextItem = () => {
+    if (currentItemIndex === carouselItems.length - 1) {
+      setCurrentItemIndex(0);
     } else {
-      if (currentItemIndex === 0) {
-        setCurrentItemIndex(carouselItems.length);
-      } else {
-        setCurrentItemIndex((prev) => {
-          return prev - 1;
-        });
-      }
+      setCurrentItemIndex((prev) => {
+        return prev + 1;
+      });
     }
   };
 
+  const prevItem = () => {
+    if (currentItemIndex === 0) {
+      setCurrentItemIndex(carouselItems.length - 1);
+    } else {
+      setCurrentItemIndex((prev) => {
+        return prev - 1;
+      });
+    }
+  };
+
+  const setCurrentSlide = (e) => {
+    let isNext = e.target.alt === ">" || e.target.className.includes("next");
+
+    if (isNext) {
+      nextItem();
+    } else {
+      prevItem();
+    }
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: nextItem,
+    onSwipedRight: prevItem,
+  });
+
   return (
-    <div className={`${styles.carousel}`}>
-      <button className={`${styles.next}`} onClick={setCurrentSlide}>
+    <div {...swipeHandlers} className={`${styles.carousel}`}>
+      <button className={`${styles.prev}`} onClick={setCurrentSlide}>
         <img src={prev} alt="<" />
       </button>
 
@@ -60,9 +72,19 @@ function Carousel() {
           alt=""
         />
 
-        <div>{carouselItems[currentItemIndex]?.title}</div>
+        <div className={`${styles.carouselItemDetails}`}>
+          <h1>{carouselItems[currentItemIndex]?.title}</h1>
+          <span>
+            <img
+              className={`${styles.star}`}
+              src={star}
+              alt={carouselItems[currentItemIndex]?.vote_average}
+            />
+            {carouselItems[currentItemIndex]?.vote_average}{" "}
+          </span>
+        </div>
       </div>
-      <button className={`${styles.prev}`} onClick={setCurrentSlide}>
+      <button className={`${styles.next}`} onClick={setCurrentSlide}>
         <img src={next} alt=">" />
       </button>
     </div>
