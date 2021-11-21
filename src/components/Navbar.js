@@ -5,10 +5,18 @@ import menulogo from "../img/menu.svg";
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const toggleButtonHandler = () => {
+  const toggleButtonHandler = (event) => {
     setIsMobileMenuOpen((prev) => {
       return !prev;
     });
+
+    event.preventDefault();
+
+    let to = event.target.text;
+    let off = document.querySelector("#Header").clientHeight;
+    let loc = document.querySelector(`#${to}`)?.getBoundingClientRect().y;
+
+    window.scrollBy(0, loc - off);
   };
   return (
     <>
@@ -20,7 +28,7 @@ function Navbar() {
         <img src={menulogo} alt="" />
       </button>
       <div
-        className={`${styles.navbarLinks} ${
+        className={`${styles.navbarLinks}  ${
           isMobileMenuOpen ? styles.active : ""
         }`}
         id="navbar-links"

@@ -26,6 +26,7 @@
   text-align: left;
   margin: 5px;
   min-width: min-content;
+  cursor: pointer;
 }
 
 .h1 {

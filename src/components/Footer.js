@@ -19,11 +19,11 @@ function Footer() {
         {/* <a href="https://firebase.google.com/" target="_blank">
           <img src={firebase_logo} alt="" />
         </a> */}
-        <a href="https://github.com/MAB51095/homeplex" target="_blank">
-          <img src={github_logo} alt="" />
-        </a>
         <a href="https://developers.themoviedb.org/3" target="_blank">
           <img src={tmdb_logo} alt="" />
+        </a>
+        <a href="https://github.com/MAB51095/homeplex" target="_blank">
+          <img src={github_logo} alt="" />
         </a>
       </div>
     </footer>
