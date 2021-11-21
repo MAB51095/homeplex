@@ -13,7 +13,7 @@
 
 .navbarLinks li .a {
   text-decoration: none;
-  color: var(--color-2);
+  color: #fff;
   padding: 1.5rem;
   display: block;
 
@@ -28,7 +28,7 @@
 .navbarLinks li:hover {
   /* background-position-x: 0rem; */
   background-image: repeating-linear-gradient(var(--color-2), var(--color-1));
-  color: #fff;
+
   box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px var(--color-2),
     0 0 4px var(--color-2), 0 0 5px var(--color-2), 0 0 6px var(--color-2),
     0 0 7px var(--color-2);
