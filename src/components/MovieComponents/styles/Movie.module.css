@@ -1,0 +1,13 @@
+.movie {
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.moviePoster {
+  width: 150px;
+  height: 250px;
+  border-radius: 5px;
+  object-fit: cover;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+}

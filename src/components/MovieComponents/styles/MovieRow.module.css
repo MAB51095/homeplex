@@ -1,0 +1,22 @@
+.row {
+  width: 99vw;
+  padding: 1rem;
+
+  box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px var(--color-primary),
+    0 0 4px var(--color-primary), 0 0 5px var(--color-primary),
+    0 0 6px var(--color-primary), 0 0 7px var(--color-primary);
+}
+
+.row h2 {
+  text-align: left;
+}
+.movieRow {
+  overflow-x: scroll;
+  display: flex;
+}
+
+@media (max-width: 500px) {
+  .row h2 {
+    text-align: center;
+  }
+}

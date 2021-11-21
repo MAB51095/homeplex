@@ -6,6 +6,10 @@
   transition: all ease-out 0.01s;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --color-1: #186cb8;
   --color-2: #2a9a9f;
@@ -22,6 +26,12 @@ body {
     #3d0847,
     #1f0025
   );
+
+  color: #fff;
+
+  text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px var(--color-primary),
+    0 0 4px var(--color-primary), 0 0 5px var(--color-primary),
+    0 0 6px var(--color-primary), 0 0 7px var(--color-primary);
 }
 
 *::-webkit-scrollbar {

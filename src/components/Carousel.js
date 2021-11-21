@@ -12,13 +12,12 @@ function Carousel() {
   const [carouselItems, setCarouselItems] = useState("");
   const [currentItemIndex, setCurrentItemIndex] = useState("");
 
-  const trendingUrl = uri.fetchTrending;
+  const trendingUrl = uri.fetchTrendingMovies;
 
   useEffect(() => {
     async function fetchTrending() {
       const request = await tmdbClient.get(trendingUrl);
       setCarouselItems(request.data.results);
-      console.log(request.data.results);
     }
     fetchTrending();
     setCurrentItemIndex(0);
@@ -68,7 +67,7 @@ function Carousel() {
       <div className={`${styles.carouselItem} glass`}>
         <img
           className={`${styles.carouselItemImage} ${styles.fade}`}
-          src={uri.imageURL + carouselItems[currentItemIndex]?.backdrop_path}
+          src={uri.bgImageURL + carouselItems[currentItemIndex]?.backdrop_path}
           alt=""
         />
 

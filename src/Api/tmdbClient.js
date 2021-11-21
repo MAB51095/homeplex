@@ -4,8 +4,26 @@ export const API_KEY = "69dd7725fffd7b9e76777dd240ae3fc4";
 const baseURL = "https://api.themoviedb.org/3";
 
 export const uri = {
-  imageURL: "https://image.tmdb.org/t/p/w780/",
-  fetchTrending: "/trending/movie/week?api_key=" + API_KEY,
+  bgImageURL: "https://image.tmdb.org/t/p/w780/",
+
+  posterImageURL: "https://image.tmdb.org/t/p/w154/",
+
+  fetchTrendingMovies: "/trending/movie/week?api_key=" + API_KEY,
+
+  fetchTopRatedMovies:
+    "/movie/top_rated?api_key=" + API_KEY + "&language=en-US&page=1",
+
+  fetchPopularMovies:
+    "/movie/popular?api_key=" + API_KEY + "&language=en-US&page=1",
+
+  fetchUpcomingMovies:
+    "/movie/upcoming?api_key=" + API_KEY + "&language=en-US&page=1",
+
+  fetchPopularSeries:
+    "/tv/popular?api_key=" + API_KEY + "&language=en-US&page=1",
+
+  fetchTopRatedSeries:
+    "/tv/top_rated?api_key=" + API_KEY + "&language=en-US&page=1",
 };
 
 const tmdbClient = axios.create({

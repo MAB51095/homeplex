@@ -11,14 +11,14 @@ import tmdb_logo from "../img/tmdb.svg";
 function Footer() {
   return (
     <footer className={`${styles.footer}`}>
-      <div>Built with</div>
+      <div>Powered by</div>
       <div className={`${styles.logos}`}>
         <a href="https://reactjs.org/docs/getting-started.html" target="_blank">
           <img src={react_logo} alt="" />
         </a>
-        <a href="https://firebase.google.com/" target="_blank">
+        {/* <a href="https://firebase.google.com/" target="_blank">
           <img src={firebase_logo} alt="" />
-        </a>
+        </a> */}
         <a href="https://github.com/MAB51095/homeplex" target="_blank">
           <img src={github_logo} alt="" />
         </a>

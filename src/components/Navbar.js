@@ -27,10 +27,27 @@ function Navbar() {
       >
         <ul>
           <li>
-            <span className={`${styles.a}`}>Home</span>
+            <a href="#" className={`${styles.a}`} onClick={toggleButtonHandler}>
+              Home
+            </a>
           </li>
           <li>
-            <span className={`${styles.a}`}>Contact</span>
+            <a
+              href="#movies"
+              className={`${styles.a}`}
+              onClick={toggleButtonHandler}
+            >
+              Movies
+            </a>
+          </li>
+          <li>
+            <a
+              href="#series"
+              className={`${styles.a}`}
+              onClick={toggleButtonHandler}
+            >
+              Series
+            </a>
           </li>
         </ul>
       </div>
