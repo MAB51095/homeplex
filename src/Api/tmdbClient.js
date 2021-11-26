@@ -8,6 +8,8 @@ export const uri = {
 
   posterImageURL: "https://image.tmdb.org/t/p/w154/",
 
+  youtubeURL: "https://www.youtube.com/watch?v=",
+
   fetchTrendingMovies: "/trending/movie/week?api_key=" + API_KEY,
 
   fetchTopRatedMovies:
@@ -24,6 +26,10 @@ export const uri = {
 
   fetchTopRatedSeries:
     "/tv/top_rated?api_key=" + API_KEY + "&language=en-US&page=1",
+
+  fetchMovieTrailerKey:
+    "/movie/id/videos?api_key=" + API_KEY + "&language=en-US",
+  fetchSeriesTrailerKey: "/tv/id/videos?api_key=" + API_KEY + "&language=en-US",
 };
 
 const tmdbClient = axios.create({

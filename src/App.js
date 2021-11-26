@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Carousel from "./components/Carousel";
 import MovieRow from "./components/MovieComponents/MovieRow";
 import { uri } from "./Api/tmdbClient";
+import YouTube from "react-youtube";
 
 function App() {
   return (
@@ -14,16 +15,37 @@ function App() {
 
         <section id="suggestions">
           <section id="Movies">
-            <MovieRow name="Popular Movies" uri={uri.fetchPopularMovies} />
-            <MovieRow name="Top Rated Movies" uri={uri.fetchTopRatedMovies} />
-            <MovieRow name="Upcoming Movies" uri={uri.fetchUpcomingMovies} />
+            <MovieRow
+              type="movie"
+              name="Popular Movies"
+              uri={uri.fetchPopularMovies}
+            />
+            <MovieRow
+              type="movie"
+              name="Top Rated Movies"
+              uri={uri.fetchTopRatedMovies}
+            />
+            <MovieRow
+              type="movie"
+              name="Upcoming Movies"
+              uri={uri.fetchUpcomingMovies}
+            />
           </section>
           <section id="Series">
-            <MovieRow name="Popular Series" uri={uri.fetchPopularSeries} />
-            <MovieRow name="Top Rated Series" uri={uri.fetchTopRatedSeries} />
+            <MovieRow
+              type="series"
+              name="Popular Series"
+              uri={uri.fetchPopularSeries}
+            />
+            <MovieRow
+              type="series"
+              name="Top Rated Series"
+              uri={uri.fetchTopRatedSeries}
+            />
           </section>
         </section>
       </section>
+
       <Footer />
     </div>
   );
