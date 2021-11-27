@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles/Movie.module.css";
 import poster from "../../img/poster.jpg";
 import tmdbClient, { uri } from "../../Api/tmdbClient";
+import { getTrailerKey } from "../../Helper/trailerHelper";
 
 function Movie({ movie, type }) {
   const moviePoster =
@@ -11,23 +12,10 @@ function Movie({ movie, type }) {
   const id = movie.id;
 
   useEffect(() => {
-    const url = (
-      type === "movie" ? uri.fetchMovieTrailerKey : uri.fetchSeriesTrailerKey
-    ).replace("id", movie.id);
-
     async function getTrailer() {
-      let keyRequest = await tmdbClient.get(url);
-
-      console.log(keyRequest.data.results);
-
-      setTrailer(
-        uri.youtubeURL +
-          keyRequest.data.results.filter(
-            (m) => m.site === "YouTube" && m.type === "Trailer"
-          )[0]?.key
-      );
+      let trailer = await getTrailerKey(id, type);
+      setTrailer(trailer);
     }
-
     getTrailer();
   }, [id, type]);
 

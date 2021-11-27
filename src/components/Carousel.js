@@ -7,6 +7,7 @@ import tmdbClient, { uri } from "../Api/tmdbClient";
 import { useSwipeable } from "react-swipeable";
 
 import star from "../img/star.svg";
+import { getTrailerKey } from "../Helper/trailerHelper";
 
 function Carousel() {
   const [carouselItems, setCarouselItems] = useState("");
@@ -15,10 +16,20 @@ function Carousel() {
   const trendingUrl = uri.fetchTrendingMovies;
 
   useEffect(() => {
+    let items = [];
+
     async function fetchTrending() {
       const request = await tmdbClient.get(trendingUrl);
-      setCarouselItems(request.data.results);
+      items = request.data.results;
+
+      for (let i = 0; i < items.length; i++) {
+        let key = await getTrailerKey(items[i].id, "movie");
+        items[i] = { ...items[i], key };
+      }
+
+      setCarouselItems(items);
     }
+
     fetchTrending();
     setCurrentItemIndex(0);
   }, [trendingUrl]);
@@ -65,11 +76,20 @@ function Carousel() {
       </button>
 
       <div className={`${styles.carouselItem} glass`}>
-        <img
-          className={`${styles.carouselItemImage} ${styles.fade}`}
-          src={uri.bgImageURL + carouselItems[currentItemIndex]?.backdrop_path}
-          alt=""
-        />
+        <a
+          href={carouselItems[currentItemIndex]?.key}
+          target="_blank"
+          className={`${styles.carouselItemImage}`}
+          rel="noreferrer"
+        >
+          <img
+            className={`${styles.carouselItemImage} ${styles.fade}`}
+            src={
+              uri.bgImageURL + carouselItems[currentItemIndex]?.backdrop_path
+            }
+            alt=""
+          />
+        </a>
 
         <div className={`${styles.carouselItemDetails}`}>
           <h1>{carouselItems[currentItemIndex]?.title}</h1>
