@@ -15,21 +15,19 @@ function Carousel() {
 
   const trendingUrl = uri.fetchTrendingMovies;
 
+  const showTrailer = async () => {
+    let url = await getTrailerKey(carouselItems[currentItemIndex].id, "movie");
+    window.open(url, "_blank");
+  };
+
   useEffect(() => {
     let items = [];
 
     async function fetchTrending() {
       const request = await tmdbClient.get(trendingUrl);
       items = request.data.results;
-
-      for (let i = 0; i < items.length; i++) {
-        let key = await getTrailerKey(items[i].id, "movie");
-        items[i] = { ...items[i], key };
-      }
-
       setCarouselItems(items);
     }
-
     fetchTrending();
     setCurrentItemIndex(0);
   }, [trendingUrl]);
@@ -75,21 +73,12 @@ function Carousel() {
         <img src={prev} alt="<" />
       </button>
 
-      <div className={`${styles.carouselItem} glass`}>
-        <a
-          href={carouselItems[currentItemIndex]?.key}
-          target="_blank"
-          className={`${styles.carouselItemImage}`}
-          rel="noreferrer"
-        >
-          <img
-            className={`${styles.carouselItemImage} ${styles.fade}`}
-            src={
-              uri.bgImageURL + carouselItems[currentItemIndex]?.backdrop_path
-            }
-            alt=""
-          />
-        </a>
+      <div className={`${styles.carouselItem} glass`} onClick={showTrailer}>
+        <img
+          className={`${styles.carouselItemImage} ${styles.fade}`}
+          src={uri.bgImageURL + carouselItems[currentItemIndex]?.backdrop_path}
+          alt=""
+        />
 
         <div className={`${styles.carouselItemDetails}`}>
           <h1>{carouselItems[currentItemIndex]?.title}</h1>
